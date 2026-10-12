@@ -1,0 +1,32 @@
+[
+  {
+    "prompt": "Ticket 101: Tauhid Zaman wants one Classic Bulldog Tee (CC-TEE-WHITE) in size S. Using the campus-customs MCP server, how many are in stock and where?",
+    "tool_name": "mcp__campus-customs__get_inventory_stock_for_sku_size",
+    "arguments": {"sku": "CC-TEE-WHITE", "size": "S"},
+    "ticket_id": 101,
+    "tool_output": {"found": true, "sku": "CC-TEE-WHITE", "name": "Classic Bulldog Tee", "size": "S", "qty": 0, "location": "Aisle B"},
+    "database_verification": "Checked inventory row (sku='CC-TEE-WHITE', size='S') in data/campus_customs_new.db: name 'Classic Bulldog Tee', qty 0, location 'Aisle B'. All fields match the tool output.",
+    "status": "passed"
+  },
+  {
+    "prompt": "Ticket 102: Elm City Properties says shop rent is due in 2 days. Using the campus-customs MCP server, look up lease 1's rent and due date and the current checking account balance.",
+    "tool_name": "mcp__campus-customs__get_lease_rent_and_cash_balance",
+    "arguments": {"lease_id": 1, "account_name": "checking"},
+    "ticket_id": 102,
+    "tool_output": {
+      "lease": {"found": true, "id": 1, "space_name": "Chapel Street shop", "landlord": "Elm City Properties", "monthly_rent": 2400, "next_due": "2026-09-02", "notes": null},
+      "cash_account": {"found": true, "name": "checking", "balance": 3400, "date": "2026-08-31"}
+    },
+    "database_verification": "Checked leases row id=1 (Chapel Street shop, Elm City Properties, monthly_rent 2400.0, next_due 2026-09-02, notes NULL) and cash_accounts row name='checking' (balance 3400.0, date 2026-08-31) in data/campus_customs_new.db. All fields match the tool output.",
+    "status": "passed"
+  },
+  {
+    "prompt": "Ticket 103: Yale AI Club wants a bulk discount on 20 CC-HOOD-NAVY hoodies. Using the campus-customs MCP server, what are the hoodie's unit cost and list price?",
+    "tool_name": "mcp__campus-customs__get_sku_cost_and_list_price",
+    "arguments": {"sku": "CC-HOOD-NAVY"},
+    "ticket_id": 103,
+    "tool_output": {"found": true, "sku": "CC-HOOD-NAVY", "unit_cost": 22, "list_price": 58},
+    "database_verification": "Checked pricing row sku='CC-HOOD-NAVY' in data/campus_customs_new.db: unit_cost 22.0, list_price 58.0. Both fields match the tool output.",
+    "status": "passed"
+  }
+]

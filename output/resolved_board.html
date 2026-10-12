@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs — Resolved Board</title>
+<style>
+  :root { --yale: #00356B; --paper: #F6F3EC; --line: #E2DBCD; --ink: #1E2430; --muted: #6B6A66; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  header { background: var(--yale); color: #fff; padding: 22px 32px; border-bottom: 3px solid #B88A3B; }
+  header h1 { margin: 0 0 4px; font: 600 1.5rem/1.2 Georgia, serif; }
+  header p { margin: 0; opacity: .85; font-size: .9rem; }
+  main { max-width: 1240px; margin: 0 auto; padding: 24px 32px 60px; }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .stat { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+  .stat b { display: block; font: 700 1.25rem/1.3 Georgia, serif; color: var(--yale); }
+  section { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-bottom: 26px; }
+  h2 { margin: 0 0 6px; font: 600 1.3rem/1.3 Georgia, serif; color: var(--yale); }
+  .pill { display: inline-block; font: 700 .75rem/1 sans-serif; padding: 5px 10px; border-radius: 999px; vertical-align: middle; margin-left: 8px; }
+  .resolved { background: #E5F3EA; color: #2E7D4F; }
+  .open { background: #FCF0D8; color: #9A5B00; }
+  figure { margin: 14px 0 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; display: block; }
+  figcaption { color: var(--muted); font-size: .88rem; margin-top: 8px; }
+  code { font: .85em ui-monospace, Menlo, monospace; background: #EFEADF; padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Campus Customs — Resolved Board</h1>
+  <p>Problem 9 clean end-to-end run · shop date 2026-08-31 · real screenshots of the React dashboard (<code style="background:rgba(255,255,255,.18);color:#fff">http://localhost:5173</code>) captured after each ticket completed</p>
+</header>
+<main>
+  <div class="summary">
+    <div class="stat">Starting checking (after reset)<b>$3,400.00</b></div>
+    <div class="stat">Approved cash outflow<b>−$3,240.00</b></div>
+    <div class="stat">Ending checking (<code>cash_accounts</code>)<b>$160.00</b></div>
+    <div class="stat">Tickets<b>1 resolved · 2 open</b></div>
+  </div>
+
+  <section aria-labelledby="t101">
+    <h2 id="t101">Ticket 101 — Bulldog tee <span class="pill open">Open</span></h2>
+    <p>The size S tee is out of stock. With human approval, invoice 501 was paid ($840.00, checking $3,400.00 → $2,560.00), which unblocked Bulldog Print Co. The restock purchase was left pending by the human, and the customer draft is unsent, so the ticket remains open.</p>
+    <figure>
+      <img src="resolved_ticket_101.png" alt="Dashboard showing ticket 101 with Approval needed badge, pending restock purchase card, checking $2,560.00, and the Boss conclusion">
+      <figcaption>Ticket 101, final status <strong>open</strong> (Boss: needs human approval). Runs <code>c8f8c9868cee</code> and <code>bba1e8dc9149</code>.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="t102">
+    <h2 id="t102">Ticket 102 — Rent due <span class="pill resolved">Resolved</span></h2>
+    <p>The rent notice was verified against lease 1. With human approval, rent was paid ($2,400.00, checking $2,560.00 → $160.00). The Boss then verified the payment and the human approved the resolution.</p>
+    <figure>
+      <img src="resolved_ticket_102.png" alt="Dashboard showing ticket 102 marked Resolved, with the executed resolution and rent payment in approval history, checking $160.00">
+      <figcaption>Ticket 102, final status <strong>resolved</strong>. Runs <code>43c4e15e7d5f</code>, <code>7c234e6f28d9</code> and <code>cee1873a1426</code>.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="t103">
+    <h2 id="t103">Ticket 103 — Bulk hoodie discount <span class="pill open">Open</span></h2>
+    <p>8 of 20 size M hoodies are in stock (cost $22.00, list $58.00). The bulk discount and the 12-unit shortfall are human decisions with no executable action, so no cash moved, and the customer draft is unsent.</p>
+    <figure>
+      <img src="resolved_ticket_103.png" alt="Dashboard showing ticket 103 with Approval needed badge, run summary and agent activity, checking $160.00">
+      <figcaption>Ticket 103, final status <strong>open</strong> (Boss: needs human approval). Run <code>871e6f7e7375</code>.</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

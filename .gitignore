@@ -1,0 +1,56 @@
+# --- Secrets and credentials ---------------------------------------------
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*.json
+
+# --- Python ----------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Node / frontend build -------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/node_modules/.tmp/
+*.tsbuildinfo
+
+# --- Runtime temporaries (evidence JSON files are kept) ---------------------
+output/*.lock
+output/*.tmp
+output/.board_check.html
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/.campus_customs_new.db.resetting
+
+# --- Logs --------------------------------------------------------------------
+*.log
+npm-debug.log*
+logs/
+
+# --- Editors and operating systems -------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Local Claude Code session settings (not part of the project) ------------
+.claude/

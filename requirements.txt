@@ -1,0 +1,11 @@
+# Python dependencies for the Campus Customs HW5 project (backend + MCP server).
+# Install into a virtual environment at the project root:  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# Versions are the ones the project was built and verified with.
+
+pydantic-ai-slim[openai,mcp]==2.55.0   # agents, OpenAIResponsesModel, MCPToolset
+fastmcp==4.1.0                         # MCP server (mcp_server/server.py) and MCP client
+fastapi==0.143.0                       # backend/main.py (includes starlette)
+uvicorn[standard]==0.54.0              # serves backend/main.py
+openai==3.29.0                         # AsyncOpenAI client pointed at the Portkey gateway
+pydantic==2.14.1                       # shared models in backend/models.py
+python-dotenv==1.2.4                   # loads the local .env in backend/config.py

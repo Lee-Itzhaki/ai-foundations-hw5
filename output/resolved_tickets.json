@@ -1,0 +1,472 @@
+[
+  {
+    "id": 101,
+    "final_status": "open",
+    "boss_final_outcome": "needs_human_approval",
+    "short_outcome": "Size S tee is out of stock (qty 0). The rush-reprint vendor Bulldog Print Co was blocked by unpaid, past-due invoice 501. With human approval, invoice 501 ($840.00) was paid, which unblocked the vendor (earliest arrival 2026-09-05). Size S is still not in stock; a restock purchase was proposed but left pending by the human, and the customer draft is unsent. Ticket remains open.",
+    "agents_involved": [
+      "boss",
+      "inventory",
+      "accounting",
+      "customer_service"
+    ],
+    "agent_contributions": {
+      "boss": "Read ticket 101 and the shop date; delegated to Inventory, Accounting and Customer Service in both runs; concluded 'needs_human_approval' both times (blockers before payment; restock and customer-draft decisions after).",
+      "inventory": "Found CC-TEE-WHITE/S qty 0; identified Bulldog Print Co as a possible supplier by specialty (no SKU-vendor link); run 1: vendor blocked by open invoice 501; run 2: vendor ships again, earliest arrival 2026-09-05; proposed a restock purchase (run 2).",
+      "accounting": "Looked up the cash account via list_cash_accounts; confirmed invoice 501 ($840.00, due 2026-08-28) open and past due; check_payment_feasibility: ready for approval, balance after $2,560.00; prepared the payment proposal. Run 2: confirmed invoice 501 paid (payment #1), no new proposal.",
+      "customer_service": "Checked stock and the $28.00 list price; prepared an internal, unsent draft to Tauhid Zaman that promises no date; in run 2 asked Inventory (depth 2) for restock facts."
+    },
+    "delegations": [
+      {
+        "run_id": "c8f8c9868cee",
+        "step": 4,
+        "from": "boss",
+        "to": "inventory",
+        "depth": 1,
+        "task": "Assess fulfillment of this customer order: one CC-TEE-WHITE, size S. Check stock and, if unavailable, vendor/lead time and any open unpaid vendor invoice blocker. Do not place orders or change records; report proposed next steps and exact evidence.",
+        "result_status": "blocked"
+      },
+      {
+        "run_id": "c8f8c9868cee",
+        "step": 9,
+        "from": "boss",
+        "to": "accounting",
+        "depth": 1,
+        "task": "Review linked invoice 501 in context of ticket 101. Determine whether it is a vendor invoice and assess payment feasibility/proposal only if appropriate. Do not execute payment. Report exact evidence and human approval needs.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "c8f8c9868cee",
+        "step": 15,
+        "from": "boss",
+        "to": "customer_service",
+        "depth": 1,
+        "task": "Prepare an internal customer reply draft for ticket 101, using the verified stock and shipment/payment status. Do not send it; avoid promising a fulfillment date because the potential supplier is blocked pending payment approval. Clearly communicate the delay and that we will update them. Return draft and evidence.",
+        "result_status": "succeeded"
+      },
+      {
+        "run_id": "bba1e8dc9149",
+        "step": 4,
+        "from": "boss",
+        "to": "inventory",
+        "depth": 1,
+        "task": "Assess fulfillment/restock for the requested customer order: 1 CC-TEE-WHITE size S, using current inventory and vendor/lead-time availability. Note any vendor unpaid-invoice shipping blocker and only propose any required restock; do not place orders or change records.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "bba1e8dc9149",
+        "step": 5,
+        "from": "boss",
+        "to": "accounting",
+        "depth": 1,
+        "task": "Review linked invoice 501 and relevant cash/payment state. Determine whether there is an invoice obligation, whether a payment proposal is appropriate/feasible, and return any proposal only if permitted. Do not execute payment or alter records.",
+        "result_status": "succeeded"
+      },
+      {
+        "run_id": "bba1e8dc9149",
+        "step": 6,
+        "from": "boss",
+        "to": "customer_service",
+        "depth": 1,
+        "task": "Analyze customer-facing next step for ticket 101 and prepare an internal draft reply based only on available facts and specialist findings, if appropriate. Do not send any message.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "bba1e8dc9149",
+        "step": 14,
+        "from": "customer_service",
+        "to": "inventory",
+        "depth": 2,
+        "task": "For ticket 101, check whether CC-TEE-WHITE size S can be restocked, including recorded vendor lead time and any open unpaid invoice/shipping blocker. Do not order anything; report verified facts for customer-facing draft.",
+        "result_status": "needs_human_approval"
+      }
+    ],
+    "mcp_tools_used": [
+      {
+        "tool": "get_shop_date",
+        "calls": 2,
+        "called_by": [
+          "boss"
+        ]
+      },
+      {
+        "tool": "get_ticket_details",
+        "calls": 5,
+        "called_by": [
+          "accounting",
+          "boss",
+          "customer_service"
+        ]
+      },
+      {
+        "tool": "get_inventory_stock_for_sku_size",
+        "calls": 5,
+        "called_by": [
+          "customer_service",
+          "inventory"
+        ]
+      },
+      {
+        "tool": "list_vendors",
+        "calls": 3,
+        "called_by": [
+          "inventory"
+        ]
+      },
+      {
+        "tool": "get_vendor_shipping_status",
+        "calls": 3,
+        "called_by": [
+          "inventory"
+        ]
+      },
+      {
+        "tool": "list_cash_accounts",
+        "calls": 2,
+        "called_by": [
+          "accounting"
+        ]
+      },
+      {
+        "tool": "get_invoice_with_vendor",
+        "calls": 2,
+        "called_by": [
+          "accounting"
+        ]
+      },
+      {
+        "tool": "check_payment_feasibility",
+        "calls": 1,
+        "called_by": [
+          "accounting"
+        ]
+      },
+      {
+        "tool": "get_sku_cost_and_list_price",
+        "calls": 2,
+        "called_by": [
+          "customer_service"
+        ]
+      },
+      {
+        "tool": "execute_approved_payment",
+        "calls": 1,
+        "called_by": [
+          "human-approval route (backend)"
+        ]
+      }
+    ],
+    "human_approvals": [
+      {
+        "action_id": "act_c807ed5f12",
+        "kind": "payment",
+        "prepared_by": "accounting",
+        "run_id": "c8f8c9868cee",
+        "description": "Pay vendor_invoice 501 to Bulldog Print Co from checking",
+        "payee": "Bulldog Print Co",
+        "amount": 840.0,
+        "human_decision": "approved",
+        "approved_by": "Lee Itzhaki",
+        "final_action_status": "executed",
+        "payment_id": 1,
+        "note": "Approved by Lee Itzhaki in chat, then executed via the dashboard approval control; backend re-validated and recorded payment #1."
+      },
+      {
+        "action_id": "act_2d755491b4",
+        "kind": "purchase",
+        "prepared_by": "inventory",
+        "run_id": "bba1e8dc9149",
+        "description": "Proposed order for 1 CC-TEE-WHITE size S, subject to confirming Bulldog Print Co as an appropriate supplier for this SKU and human approval. Its recorded lead time is 5 days; earliest arrival if ordered on 2026-08-31 is 2026-09-05.",
+        "payee": null,
+        "amount": null,
+        "human_decision": "not_approved",
+        "approved_by": null,
+        "final_action_status": "pending_human_approval",
+        "payment_id": null,
+        "note": "Presented to Lee Itzhaki; the human chose to leave it pending. No vendor contact, no cash effect."
+      }
+    ],
+    "cash_change": -840.0,
+    "final_checking_balance_after_ticket": 2560.0,
+    "run_id": "bba1e8dc9149",
+    "all_run_ids": [
+      "c8f8c9868cee",
+      "bba1e8dc9149"
+    ],
+    "approval_run_ids": [
+      "approval_b97e9550"
+    ]
+  },
+  {
+    "id": 102,
+    "final_status": "resolved",
+    "boss_final_outcome": "succeeded",
+    "short_outcome": "Rent notice verified against lease 1 (Elm City Properties, $2,400.00 due 2026-09-02). With human approval, rent was paid (payment #2), leaving checking at $160.00. A verification run first misread the advanced next_due as a conflict; after a small fix exposing recorded rent payments, the Boss concluded 'succeeded', and the human-approved resolution marked the ticket resolved.",
+    "agents_involved": [
+      "boss",
+      "facilities",
+      "accounting"
+    ],
+    "agent_contributions": {
+      "boss": "Read ticket 102; delegated to Facilities and Accounting in all three runs; concluded needs_human_approval, then partial (pre-fix verification), then succeeded (post-fix), which created the resolution request.",
+      "facilities": "Verified landlord matches requester and next_due 2026-09-02 is 2 days after the desk date; passed the payment side to Accounting (depth 2). Guessed account names ('' then 'operating') before the fix; after the fix used list_cash_accounts and recorded_rent_payments to confirm the rent was already paid.",
+      "accounting": "Found 'checking' via list_cash_accounts; check_payment_feasibility: $2,400.00 ready for approval, balance after $160.00; prepared the proposal. After payment, correctly refused a second rent payment (insufficient funds; would go to -$2,240.00) and confirmed payment #2."
+    },
+    "delegations": [
+      {
+        "run_id": "43c4e15e7d5f",
+        "step": 4,
+        "from": "boss",
+        "to": "facilities",
+        "depth": 1,
+        "task": "Review lease 1 for ticket 102: confirm rent amount, due date/status, and any lease/location context relevant to the rent notice. Do not change records; report needed human actions.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "43c4e15e7d5f",
+        "step": 5,
+        "from": "boss",
+        "to": "accounting",
+        "depth": 1,
+        "task": "For ticket 102's linked lease 1, check rent-payment feasibility and prepare a payment proposal only if permitted/feasible. Do not execute payment. Report amount, cash balance effects, and approval/blockers.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "43c4e15e7d5f",
+        "step": 8,
+        "from": "facilities",
+        "to": "accounting",
+        "depth": 2,
+        "task": "Check payment feasibility for lease rent obligation lease_id 1, monthly_rent $2400.00, due 2026-09-02. Identify appropriate cash account from records and prepare payment proposal only if feasible; do not execute. Requester/landlord verified as Elm City Properties. Current shop date 2026-08-31.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "7c234e6f28d9",
+        "step": 4,
+        "from": "boss",
+        "to": "facilities",
+        "depth": 1,
+        "task": "Review lease 1 for ticket 102: establish the rent obligation and due date/status, and identify any facilities-related action or human decision needed. Do not change records or make payment.",
+        "result_status": "partial"
+      },
+      {
+        "run_id": "7c234e6f28d9",
+        "step": 5,
+        "from": "boss",
+        "to": "accounting",
+        "depth": 1,
+        "task": "For lease 1 on rent notice ticket 102, inspect the payment obligation and assess payment feasibility/proposal if appropriate. Do not execute payment. Report amount, payee/account, resulting balance, and blockers; payment proposal only if supported by feasibility result.",
+        "result_status": "blocked"
+      },
+      {
+        "run_id": "7c234e6f28d9",
+        "step": 11,
+        "from": "facilities",
+        "to": "accounting",
+        "depth": 2,
+        "task": "For lease rent obligation lease_id 1, check payment feasibility/proposal using the operating account if applicable. Lease rent is $2400.00, landlord Elm City Properties, next_due 2026-10-02. Do not execute payment; report missing account/blockers and any human approval needs.",
+        "result_status": "blocked"
+      },
+      {
+        "run_id": "cee1873a1426",
+        "step": 4,
+        "from": "boss",
+        "to": "facilities",
+        "depth": 1,
+        "task": "Review lease 1 for ticket 102: determine rent amount, due date/status and any relevant lease/location details. Do not change records or execute anything. Report facts and any action needed.",
+        "result_status": "succeeded"
+      },
+      {
+        "run_id": "cee1873a1426",
+        "step": 5,
+        "from": "boss",
+        "to": "accounting",
+        "depth": 1,
+        "task": "For ticket 102, assess whether rent for lease 1 can be paid: check payment feasibility and return any payment proposal if feasible. Do not execute payment. Report blockers and approval needs.",
+        "result_status": "blocked"
+      },
+      {
+        "run_id": "cee1873a1426",
+        "step": 11,
+        "from": "facilities",
+        "to": "accounting",
+        "depth": 2,
+        "task": "Review the rent payment side for lease 1 / ticket 102. No payment action is authorized. Based on recorded rent payment and current next_due, determine whether any payment feasibility check/payment proposal is currently applicable; do not execute anything. Return status to me.",
+        "result_status": "succeeded"
+      }
+    ],
+    "mcp_tools_used": [
+      {
+        "tool": "get_shop_date",
+        "calls": 5,
+        "called_by": [
+          "boss",
+          "facilities"
+        ]
+      },
+      {
+        "tool": "get_ticket_details",
+        "calls": 4,
+        "called_by": [
+          "boss",
+          "facilities"
+        ]
+      },
+      {
+        "tool": "get_lease_rent_and_cash_balance",
+        "calls": 6,
+        "called_by": [
+          "accounting",
+          "facilities"
+        ]
+      },
+      {
+        "tool": "list_cash_accounts",
+        "calls": 6,
+        "called_by": [
+          "accounting",
+          "facilities"
+        ]
+      },
+      {
+        "tool": "check_payment_feasibility",
+        "calls": 5,
+        "called_by": [
+          "accounting"
+        ]
+      },
+      {
+        "tool": "execute_approved_payment",
+        "calls": 1,
+        "called_by": [
+          "human-approval route (backend)"
+        ]
+      },
+      {
+        "tool": "resolve_ticket",
+        "calls": 1,
+        "called_by": [
+          "human-approval route (backend)"
+        ]
+      }
+    ],
+    "human_approvals": [
+      {
+        "action_id": "act_7b0419618b",
+        "kind": "payment",
+        "prepared_by": "accounting",
+        "run_id": "43c4e15e7d5f",
+        "description": "Pay lease_rent 1 to Elm City Properties from checking",
+        "payee": "Elm City Properties",
+        "amount": 2400.0,
+        "human_decision": "approved",
+        "approved_by": "Lee Itzhaki",
+        "final_action_status": "executed",
+        "payment_id": 2,
+        "note": "Approved by Lee Itzhaki in chat, then executed via the dashboard approval control; backend re-validated and recorded payment #2."
+      },
+      {
+        "action_id": "act_56da0b4b27",
+        "kind": "ticket_resolution",
+        "prepared_by": "boss",
+        "run_id": "cee1873a1426",
+        "description": "Mark ticket 102 resolved: The rent notice is covered: the lease record shows a $2,400 rent payment recorded on 2026-08-31, and the lease's next due date is 2026-10-02. No further payment or customer communication is needed for this notice. No records were changed by this review.",
+        "payee": null,
+        "amount": null,
+        "human_decision": "approved",
+        "approved_by": "Lee Itzhaki",
+        "final_action_status": "executed",
+        "payment_id": null,
+        "note": "Approved by Lee Itzhaki in chat, then executed via the dashboard approval control; MCP resolve_ticket set tickets.status = 'resolved'."
+      }
+    ],
+    "cash_change": -2400.0,
+    "final_checking_balance_after_ticket": 160.0,
+    "run_id": "cee1873a1426",
+    "all_run_ids": [
+      "43c4e15e7d5f",
+      "7c234e6f28d9",
+      "cee1873a1426"
+    ],
+    "approval_run_ids": [
+      "approval_8589d3b5",
+      "approval_9b1f88f9"
+    ]
+  },
+  {
+    "id": 103,
+    "final_status": "open",
+    "boss_final_outcome": "needs_human_approval",
+    "short_outcome": "Yale AI Club wants 20 CC-HOOD-NAVY size M at a bulk discount. Stock is 8 (shortfall 12); unit cost $22.00, list price $58.00; no discount policy exists in the database. The discount and fulfillment of the shortfall are human decisions with no system action to approve, so no payment or purchase was prepared. Customer draft is unsent. Ticket remains open.",
+    "agents_involved": [
+      "boss",
+      "inventory",
+      "customer_service"
+    ],
+    "agent_contributions": {
+      "boss": "Read ticket 103; delegated to Inventory and Customer Service; concluded needs_human_approval (discount decision, shortfall, draft review).",
+      "inventory": "Found 8 on hand vs 20 requested (shortfall 12); unit cost $22.00, list price $58.00 (margin $36.00/unit); no bulk discount in the records. Did not check vendor shipping status (deviation from the plan).",
+      "customer_service": "Checked stock and price; prepared an internal, unsent draft to Yale AI Club that promises no discount or availability."
+    },
+    "delegations": [
+      {
+        "run_id": "871e6f7e7375",
+        "step": 4,
+        "from": "boss",
+        "to": "inventory",
+        "depth": 1,
+        "task": "Assess stock availability and applicable pricing for the requested bulk order of 20 CC-HOOD-NAVY, size M, and whether any bulk discount is supported. Do not change records or place orders; report evidence and any approval needed.",
+        "result_status": "needs_human_approval"
+      },
+      {
+        "run_id": "871e6f7e7375",
+        "step": 5,
+        "from": "boss",
+        "to": "customer_service",
+        "depth": 1,
+        "task": "Review this bulk hoodie discount request and provide an internal customer reply draft that does not promise an unapproved discount or availability. Do not send anything; identify any decision needed before responding.",
+        "result_status": "needs_human_approval"
+      }
+    ],
+    "mcp_tools_used": [
+      {
+        "tool": "get_shop_date",
+        "calls": 1,
+        "called_by": [
+          "boss"
+        ]
+      },
+      {
+        "tool": "get_ticket_details",
+        "calls": 1,
+        "called_by": [
+          "boss"
+        ]
+      },
+      {
+        "tool": "get_inventory_stock_for_sku_size",
+        "calls": 2,
+        "called_by": [
+          "customer_service",
+          "inventory"
+        ]
+      },
+      {
+        "tool": "get_sku_cost_and_list_price",
+        "calls": 2,
+        "called_by": [
+          "customer_service",
+          "inventory"
+        ]
+      }
+    ],
+    "human_approvals": [],
+    "cash_change": 0.0,
+    "final_checking_balance_after_ticket": 160.0,
+    "run_id": "871e6f7e7375",
+    "all_run_ids": [
+      "871e6f7e7375"
+    ],
+    "approval_run_ids": []
+  }
+]
